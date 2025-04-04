@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
+    <Properties>
+        <Property name="DATE">${date:yyyy-mm-dd}</Property>
+        <Property name="LOG_PATH">${sys:catalina.home}/webapps/multithread-task/logs</Property>
+<!--        <Property name="MESSAGE_LOG_TEMPLATE">%d{DATE} %d{HH:mm:ss,SSSSSS} %5level %t %logger{36} [%file:%line] - %msg%n</Property>-->
+    </Properties>
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout charset="UTF-8" pattern="%d{HH:mm:ss,SSSSSS} %highlight{%p} %logger{-2} - %m{FATAL=red blink,ERROR=red,WARN=yellow bold, INFO=green, DEBUG=green bold}%n"
+                           disableAnsi="false"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="APP_LOGGER" level="DEBUG">
+            <AppenderRef ref="CONSOLE" />
+            <AppenderRef ref="DEBUG_LOG_FILE" />
+        </Logger>
+
+        <Root level="INFO">
+            <AppenderRef ref="CONSOLE" />
+            <AppenderRef ref="DEBUG_LOG_FILE" />
+        </Root>
+    </Loggers>
+</Configuration>
