@@ -29,7 +29,7 @@ public class TruckFileReader {
 				trucks.add(new Truck(id, perishable, operation, processingTime));
 			}
 		} catch (IOException e) {
-			LOGGER.error("Error while reading trucks config file: " + fileName, e);
+			LOGGER.error("Error while reading trucks config file: {}", fileName, e);
 			throw new IOException(e.getMessage());
 		}
 		return trucks;

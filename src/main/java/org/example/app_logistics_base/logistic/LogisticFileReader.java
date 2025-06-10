@@ -14,7 +14,7 @@ public class LogisticFileReader {
 
 		try (InputStream is = TruckFileReader.class.getClassLoader().getResourceAsStream(fileName);
 			 BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
-			LOGGER.info("Reading logistic config file: " + fileName);
+			LOGGER.info("Reading logistic config file: {}", fileName);
 			String line;
 
 			while ((line = br.readLine()) != null) {
@@ -23,7 +23,7 @@ public class LogisticFileReader {
 				terminalsAvailable = Integer.parseInt(tokens[0]);
 			}
 		} catch (IOException e) {
-			LOGGER.error("Error while reading logistic config file: " + fileName, e);
+			LOGGER.error("Error while reading logistic config file: {}", fileName, e);
 			throw new IOException(e.getMessage());
 		}
 

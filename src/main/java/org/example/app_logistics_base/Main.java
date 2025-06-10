@@ -15,6 +15,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		try {
+			LOGGER.info("Starting app");
 			List<Truck> trucks = TruckFileReader.readTrucksConfig("trucks.txt");
 			ExecutorService executor = Executors.newFixedThreadPool(trucks.size());
 
@@ -25,7 +26,8 @@ public class Main {
 			executor.shutdown();
 			executor.awaitTermination(1, TimeUnit.SECONDS);
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.error("An error occurred while reading trucks.txt", e);
+			throw new RuntimeException(e);
 		}
 	}
 }

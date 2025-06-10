@@ -39,7 +39,7 @@ public class LogisticBase {
 			trucksQueue.remove(truck);
 		} catch (InterruptedException e) {
 			LOGGER.error("Processing queue interrupted", e);
-			throw e;
+			throw new InterruptedException();
 		} finally {
 			LOGGER.info("Releasing lock after entering terminal: {}", truck);
 			lock.unlock();

@@ -22,35 +22,19 @@ public class Truck implements Callable<Void>, Comparable<Truck> {
 		this.operation = operation;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public long getProcessingTime() {
-		return processingTime;
-	}
-
 	public boolean isPerishable() {
 		return perishable;
 	}
 
-	public TruckOperationType getOperation() {
-		return operation;
-	}
-
 	public void process() throws InterruptedException {
 		try {
-			LOGGER.info("Starting processing: " + operation + " of " + id + ", Perishable: " + perishable +
-					", Operation: " + operation);
+			LOGGER.info("Starting processing: {} of {}, Perishable: {}, Operation: {}", operation, id, perishable, operation);
 
 			TimeUnit.SECONDS.sleep(processingTime);
 
-			LOGGER.info("Finishing processing: " + operation + " of " + id + ", Perishable: " + perishable +
-					", Operation: " + operation);
+			LOGGER.info("Finishing processing: {} of {}, Perishable: {}, Operation: {}", operation, id, perishable, operation);
 		} catch (InterruptedException e) {
 			LOGGER.info("Truck processing interrupted {}: ", e);
-
-			e.printStackTrace();
 			throw new InterruptedException();
 		}
 
@@ -62,8 +46,6 @@ public class Truck implements Callable<Void>, Comparable<Truck> {
 			LogisticBaseManager.getInstance().processTruck(this);
 		} catch (InterruptedException e) {
 			LOGGER.error("Call method: Processing Truck was interrupted", e);
-
-			e.printStackTrace();
 			throw new InterruptedException();
 		}
 
