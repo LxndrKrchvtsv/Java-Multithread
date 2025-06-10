@@ -35,9 +35,8 @@ public class Producer extends Thread {
 				Thread.yield();
 			}
 		} catch (InterruptedException e) {
-			LOGGER.error(Thread.currentThread().getName() + " Thread interrupted", e);
+			LOGGER.error("{} Thread interrupted", Thread.currentThread().getName(), e);
 			Thread.currentThread().interrupt();
-			e.printStackTrace();
 		}
 	}
 }

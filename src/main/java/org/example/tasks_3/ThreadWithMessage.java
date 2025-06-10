@@ -15,15 +15,14 @@ public class ThreadWithMessage extends Thread {
 
 	public void run() {
 		try {
-			LOGGER.info("Try run thread " + Thread.currentThread().getName());
+			LOGGER.info("Try run thread {}", Thread.currentThread().getName());
 			for (String message : messages) {
 				TimeUnit.SECONDS.sleep(1);
-				LOGGER.info(message + " - message recieved for " + Thread.currentThread().getName() + " Thread");
+				LOGGER.info("{} - message received for {} Thread", message, Thread.currentThread().getName());
 			}
 		} catch (InterruptedException e) {
-			LOGGER.error(Thread.currentThread().getName() + " Thread Talk thread interrupted", e);
+			LOGGER.error("{} Thread Talk thread interrupted", Thread.currentThread().getName(), e);
 			Thread.currentThread().interrupt();
-			e.printStackTrace();
 		}
 	}
 }

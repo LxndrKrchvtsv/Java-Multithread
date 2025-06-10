@@ -23,7 +23,7 @@ public class Consumer extends Thread {
 			while (K > 0) {
 				LOGGER.info("Consumer thread going to sleep");
 				while (!producer.getFlag()) {
-					LOGGER.info("Consumer thread give control to Producer: " + !producer.getFlag());
+					LOGGER.info("Consumer thread give control to Producer: {}", !producer.getFlag());
 					Thread.yield();
 				}
 
@@ -32,9 +32,8 @@ public class Consumer extends Thread {
 				Thread.sleep(M / 10);
 			}
 		} catch (InterruptedException e) {
-			LOGGER.error(Thread.currentThread().getName() + " Thread interrupted", e);
+			LOGGER.error("{} Thread interrupted", Thread.currentThread().getName(), e);
 			Thread.currentThread().interrupt();
-			e.printStackTrace();
 		}
 	}
 }

@@ -15,12 +15,11 @@ public class TalkThread extends Thread{
 		try {
 			LOGGER.info("Talk thread started");
 			for (int i = 0; i < 10; i++) {
-				System.out.println("Child " + Thread.currentThread().getName() + " " + i);
+				LOGGER.info("Child {} {}", Thread.currentThread().getName(), i);
 				TimeUnit.MILLISECONDS.sleep(500);			}
 		} catch (InterruptedException e) {
 			LOGGER.error("Child Talk thread interrupted", e);
 			Thread.currentThread().interrupt();
-			e.printStackTrace();
 		}
 	}
 }

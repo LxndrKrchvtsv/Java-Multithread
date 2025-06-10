@@ -16,17 +16,15 @@ public class Main {
 			childT.join();
 		} catch (InterruptedException e) {
 			LOGGER.error("Child Talk thread interrupted while is parent Talk thread waiting", e);
-			e.printStackTrace();
 		}
 
 		for (int i = 0; i < 10; i++) {
 			try {
-				System.out.println("Parent Thread Talk: " + i + " - " + Thread.currentThread().getName());
+				LOGGER.info("Parent Thread Talk: {} - {}", i, Thread.currentThread().getName());
 				TimeUnit.MILLISECONDS.sleep(500);
 			} catch (InterruptedException e) {
 				LOGGER.error("Parent Talk thread interrupted", e);
 				Thread.currentThread().interrupt();
-				e.printStackTrace();
 			}
 		}
 	}

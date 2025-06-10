@@ -20,8 +20,8 @@ public class Task_4 {
 		consumer.join();
 		producer.setIsRun(false);
 
-		LOGGER.info("THREAD STATUS: " + producer.isInterrupted());
-		LOGGER.info("THREAD STATE: " + producer.getState());
+		LOGGER.info("THREAD STATUS: {}", producer.isInterrupted());
+		LOGGER.info("THREAD STATE: {}", producer.getState());
 
 		// Interrupted Exception
 		producer.interrupt();
